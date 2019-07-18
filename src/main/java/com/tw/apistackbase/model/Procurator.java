@@ -7,17 +7,16 @@ import javax.persistence.*;
 public class Procurator {
     @Id
     @GeneratedValue
-    private String id;
+    private Integer id;
+    @Column(nullable = false)
     private String name;
 
-    @ManyToOne
-    private Procuratorate procuratorate ;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -27,13 +26,5 @@ public class Procurator {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Procuratorate getProcuratorate() {
-        return procuratorate;
-    }
-
-    public void setProcuratorate(Procuratorate procuratorate) {
-        this.procuratorate = procuratorate;
     }
 }

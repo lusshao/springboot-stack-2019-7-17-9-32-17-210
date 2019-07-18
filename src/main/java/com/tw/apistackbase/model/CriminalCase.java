@@ -1,29 +1,28 @@
 package com.tw.apistackbase.model;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 @Entity
 @Table(name = "case")
-public class Case {
+public class CriminalCase {
 
     @Id
     @GeneratedValue
-    private String id;
+    private Integer id;
 
+    @Column(nullable = false)
     private String caseName;
-    private Timestamp caseTime;
+    @Column(nullable = false)
+    private Long caseTime;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL , mappedBy = "criminalCase")
     private CaseStructure caseStructure;
-    @ManyToOne
-    private Procuratorate procuratorate;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -35,11 +34,11 @@ public class Case {
         this.caseName = caseName;
     }
 
-    public Timestamp getCaseTime() {
+    public Long getCaseTime() {
         return caseTime;
     }
 
-    public void setCaseTime(Timestamp caseTime) {
+    public void setCaseTime(Long caseTime) {
         this.caseTime = caseTime;
     }
 
@@ -51,11 +50,4 @@ public class Case {
         this.caseStructure = caseStructure;
     }
 
-    public Procuratorate getProcuratorate() {
-        return procuratorate;
-    }
-
-    public void setProcuratorate(Procuratorate procuratorate) {
-        this.procuratorate = procuratorate;
-    }
 }

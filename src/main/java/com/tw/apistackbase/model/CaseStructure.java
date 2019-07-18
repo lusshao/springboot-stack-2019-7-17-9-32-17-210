@@ -7,17 +7,30 @@ import javax.persistence.*;
 public class CaseStructure {
     @Id
     @GeneratedValue
-    private String id;
+    private Integer id;
 
+    @Column(nullable = false)
     private String objectiveEssentials;
+    @Column(nullable = false)
     private String subjectiveEssentials;
 
+    @OneToOne
+    private CriminalCase criminalCase;
 
-    public String getId() {
+
+    public CaseStructure() {
+    }
+
+    public CaseStructure(String objectiveEssentials, String subjectiveEssentials) {
+        this.objectiveEssentials = objectiveEssentials;
+        this.subjectiveEssentials = subjectiveEssentials;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -37,4 +50,11 @@ public class CaseStructure {
         this.subjectiveEssentials = subjectiveEssentials;
     }
 
+    public CriminalCase getCaseId() {
+        return criminalCase;
+    }
+
+    public void setCaseId(CriminalCase criminalCaseId) {
+        this.criminalCase = criminalCaseId;
+    }
 }

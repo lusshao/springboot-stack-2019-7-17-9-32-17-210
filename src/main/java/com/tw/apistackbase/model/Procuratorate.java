@@ -9,23 +9,25 @@ import java.util.List;
 public class Procuratorate{
     @Id
     @GeneratedValue
-    private String id;
+    private Integer id;
 
+    @Column(nullable = false,length = 50,unique = true)
     private String procuratorateName;
 
     @OneToMany
     @JoinColumn(name = "procuratorate_Id")
-    private List<Case> caseList;
+    private List<CriminalCase> criminalCaseList;
 
     @OneToMany
     @JoinColumn(name = "procuratorate_Id")
     private List<Procurator> procuratorList;
 
-    public String getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -37,12 +39,12 @@ public class Procuratorate{
         this.procuratorateName = procuratorateName;
     }
 
-    public List<Case> getCaseList() {
-        return caseList;
+    public List<CriminalCase> getCriminalCaseList() {
+        return criminalCaseList;
     }
 
-    public void setCaseList(List<Case> caseList) {
-        this.caseList = caseList;
+    public void setCriminalCaseList(List<CriminalCase> criminalCaseList) {
+        this.criminalCaseList = criminalCaseList;
     }
 
     public List<Procurator> getProcuratorList() {
