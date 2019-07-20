@@ -1,6 +1,7 @@
 package com.tw.apistackbase.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,14 +15,21 @@ public class Procuratorate{
     @Column(nullable = false,length = 50,unique = true)
     private String procuratorateName;
 
-    @OneToMany
-    @JoinColumn(name = "procuratorate_Id")
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "procuratorate_id")
     private List<CriminalCase> criminalCaseList;
 
-    @OneToMany
-    @JoinColumn(name = "procuratorate_Id")
+    @OneToMany(cascade = CascadeType.ALL ,fetch = FetchType.LAZY, mappedBy = "procuratorate")
     private List<Procurator> procuratorList;
 
+    public Procuratorate() {
+    }
+
+    public Procuratorate(String procuratorateName) {
+        this.procuratorateName = procuratorateName;
+        this.criminalCaseList = new ArrayList<>();
+        this.procuratorList = new ArrayList<>();
+    }
 
     public Integer getId() {
         return id;

@@ -11,6 +11,16 @@ public class Procurator {
     @Column(nullable = false)
     private String name;
 
+    @ManyToOne
+    private Procuratorate procuratorate;
+
+    public Procurator() {
+    }
+
+    public Procurator(String name, Procuratorate procuratorate) {
+        this.name = name;
+        this.procuratorate = procuratorate;
+    }
 
     public Integer getId() {
         return id;

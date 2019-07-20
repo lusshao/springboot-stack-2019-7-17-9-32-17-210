@@ -18,6 +18,10 @@ public class CriminalCase {
     @OneToOne(cascade = CascadeType.ALL ,fetch = FetchType.LAZY, mappedBy = "criminalCase")
     private CaseStructure caseStructure;
 
+
+    @ManyToOne
+    private Procuratorate procuratorate;
+
     public CriminalCase() {
     }
 
@@ -59,4 +63,11 @@ public class CriminalCase {
         this.caseStructure = caseStructure;
     }
 
+    public Procuratorate getProcuratorate() {
+        return procuratorate;
+    }
+
+    public void setProcuratorate(Procuratorate procuratorate) {
+        this.procuratorate = procuratorate;
+    }
 }

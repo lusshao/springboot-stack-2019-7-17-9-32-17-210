@@ -11,4 +11,5 @@ public interface CriminalCaseRepository extends JpaRepository<CriminalCase,Integ
 
     public List<CriminalCase> findAllByOrderByCaseTimeDesc();
 
+    CriminalCase findByCaseName(String caseName);
 }
