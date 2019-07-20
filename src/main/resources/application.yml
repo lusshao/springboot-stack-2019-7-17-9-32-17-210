@@ -14,9 +14,11 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     username: root
     password: 123456
-    jpa:
-    properties.hibernate.hbm2ddl.auto: update
-    show-sql: true
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
   h2:
     console:
       enabled: true

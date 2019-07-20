@@ -3,10 +3,10 @@ package com.tw.apistackbase.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "caseStructure")
+@Table
 public class CaseStructure {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false)

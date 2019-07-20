@@ -5,10 +5,10 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "procuratorate")
+@Table
 public class Procuratorate{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false,length = 50,unique = true)

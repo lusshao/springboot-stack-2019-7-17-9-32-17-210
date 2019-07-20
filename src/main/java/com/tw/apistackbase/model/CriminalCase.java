@@ -3,11 +3,11 @@ package com.tw.apistackbase.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "case")
+@Table
 public class CriminalCase {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false)
@@ -15,8 +15,17 @@ public class CriminalCase {
     @Column(nullable = false)
     private Long caseTime;
 
-    @OneToOne(cascade = CascadeType.ALL , mappedBy = "criminalCase")
+    @OneToOne(cascade = CascadeType.ALL ,fetch = FetchType.LAZY, mappedBy = "criminalCase")
     private CaseStructure caseStructure;
+
+    public CriminalCase() {
+    }
+
+    public CriminalCase(String caseName, Long caseTime, CaseStructure caseStructure) {
+        this.caseName = caseName;
+        this.caseTime = caseTime;
+        this.caseStructure = caseStructure;
+    }
 
     public Integer getId() {
         return id;
